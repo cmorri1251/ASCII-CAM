@@ -4,8 +4,8 @@ Uses camera input from the user, and outputs an ASCII converted live image. Logi
 
 ## Requirements
 
-Computer Vision (C++)
-cMake
+- Computer Vision (C++)
+- cMake
 
 
 ```bash
