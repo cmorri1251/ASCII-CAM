@@ -1,8 +1,11 @@
 #include <string>
 
-std::string getCameraLogicString(){
-     cv::cvtColor(camframe, camframe, cv::IMREAD_GRAYSCALE);
-            cv::resize(cam_frame, cam_frame, cv::Size(100, 50));
+string gscale = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
+
+std::string getCameraLogicString(Mat cam_input){
+
+     cv::cvtColor(camframe, camframe, cv::IMREAD_GRAYSCALE); 
+            cv::resize(cam_frame, cam_frame, cv::Size(250, 250));
             string output;
             output.reserve(cam_frame.rows * (cam_frame.cols + 1));
 

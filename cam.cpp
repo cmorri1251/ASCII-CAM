@@ -5,29 +5,30 @@
 using namespace std;
 
 int main(int argc, char** argv){
-
-    string gscale = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
+    // webcam initializations
     cv::Mat cam_frame;
-
-    // webcam handle 
     cv::VideoCaptture cap(0);
+
     if (!cap.isOpened()) {
-        cerr << "Error opening video stream" << endl;
+        cerr << "Error opening camera" << endl;
         return -1;
     }
-
 
     while (true){
         cap >> cam_frame;   
         if (cam_frame.empty()) {
             cerr << "Error capturing frame" << endl;
+            cap.release()
             break;
 
         } else {
-            string ascii_art = getCameraLogicString();
+            string ascii_art = getCameraLogicString(cam_frame); // cam_frame output isn't string!!!!!!!!!!
             cout << ascii_art << endl;
         }
     }
+
+    destroyAllWindows() 
+    cap.release() #resource cleaning
     return 0;
 
 }
