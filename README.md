@@ -7,7 +7,10 @@ Uses camera input from the user, and outputs an ASCII converted live image. Logi
 Computer Vision (C++)
 cMake
 
-'''sdsdsdsd
+'''
+
+sdsdsdsd
 sssdsdsd
 sdsdsdsdsd
+
 '''
