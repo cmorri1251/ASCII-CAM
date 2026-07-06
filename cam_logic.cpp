@@ -7,16 +7,16 @@ std::string output;
 cv::Mat processed_frame;
 double minVal, maxVal;
 
-std::string getCameraLogicString(const cv::Mat& cam_input){ // camera input switched to constant
+std::string getCameraLogicString(const cv::Mat& cam_input){ 
     cv::cvtColor(cam_input, processed_frame, cv::COLOR_BGR2GRAY); 
-    cv:: minMaxLoc(processed_frame, &minVal, &maxVal);
+    cv:: minMaxLoc(processed_frame, &minVal, &maxVal); // camera input gets converted to colored grayscale, and min/max contrast values get pulled
     if (minVal == maxVal){
         processed_frame+cv::Scalar(128);
     } else{
         processed_frame.convertTo(processed_frame, CV_8U, 255.0 / (maxVal - minVal), -minVal * 255.0 / (maxVal - minVal));
     }
 
-    cv::GaussianBlur(processed_frame,processed_frame,cv::Size(3,3),0);
+    cv::GaussianBlur(processed_frame,processed_frame,cv::Size(3,3),0); // filter for noise 
     cv::resize(processed_frame, processed_frame, cv::Size(160, 80));
     output.clear();
     output.reserve(processed_frame.rows * (processed_frame.cols + 1));
@@ -26,10 +26,9 @@ std::string getCameraLogicString(const cv::Mat& cam_input){ // camera input swit
             int brightness = processed_frame.at<uchar>(y, x);
             brightness == std::clamp(brightness, 0, 255);
             int index = brightness * (gscale.size() - 1) / 255;
-            output += gscale[index];
+            output += gscale[index]; //main loop that appends the converted cam values to string text
         }
         output += "\n";
     }
-//output.flush();
 return output;
 }

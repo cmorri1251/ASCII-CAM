@@ -23,13 +23,11 @@ int main(int argc, char** argv){
             break;
 
         } else {
-            string ascii_art = getCameraLogicString(cam_frame); // cam_frame output isn't string!!!!!!!!!!
-            cout << "\033[H" << ascii_art; // will fix output later, its returnable rn
+            string ascii_art = getCameraLogicString(cam_frame); 
+            cout << "\033[H\033[2J" << ascii_art;
         }
     }
-
     cv::destroyAllWindows(); 
-    cap.release(); //resource cleaning
+    cap.release();
     return 0;
-
 }
