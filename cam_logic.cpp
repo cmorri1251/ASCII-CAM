@@ -2,7 +2,7 @@
 
 string gscale = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
 
-std::string getCameraLogicString(Mat cam_input){
+std::string getCameraLogicString(const cv::Mat& cam_input){ // camera input switched to constant
 
      cv::cvtColor(camframe, camframe, cv::IMREAD_GRAYSCALE); 
             cv::resize(cam_frame, cam_frame, cv::Size(250, 250));
