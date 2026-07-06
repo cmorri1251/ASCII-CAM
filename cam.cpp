@@ -28,7 +28,7 @@ int main(int argc, char** argv){
     }
 
     destroyAllWindows(); 
-    cap.release(); #resource cleaning
+    cap.release(); //resource cleaning
     return 0;
 
 }
