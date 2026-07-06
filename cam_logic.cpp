@@ -13,18 +13,18 @@ std::string getCameraLogicString(const cv::Mat& cam_input){ // camera input swit
     if (minVal == maxVal){
         processed_frame+cv::Scalar(128);
     } else{
-        processed_frame.convertTo(processed_frame, CV_8U, 255.0 / (maxVal - minVal));
+        processed_frame.convertTo(processed_frame, CV_8U, 255.0 / (maxVal - minVal), -minVal * 255.0 / (maxVal - minVal));
     }
 
-
-    cv::resize(processed_frame, processed_frame, cv::Size(80, 40));
+    cv::GaussianBlur(processed_frame,processed_frame,cv::Size(3,3),0);
+    cv::resize(processed_frame, processed_frame, cv::Size(160, 80));
     output.clear();
     output.reserve(processed_frame.rows * (processed_frame.cols + 1));
 
     for (int y = 0; y < processed_frame.rows; y++) {
         for (int x = 0; x < processed_frame.cols; x++) {
             int brightness = processed_frame.at<uchar>(y, x);
-            brightness == std::max(0, std::min(255,brightness));
+            brightness == std::clamp(brightness, 0, 255);
             int index = brightness * (gscale.size() - 1) / 255;
             output += gscale[index];
         }
