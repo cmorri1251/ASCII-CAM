@@ -1,6 +1,7 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include "cam_logic.cpp" # make headerfile lateron
+#include "cam_logic.h"
+#include <string>
 
 using namespace std;
 
@@ -22,12 +23,12 @@ int main(int argc, char** argv){
             break;
 
         } else {
-            string ascii_art = getCameraLogicString(const cv::Mat& ); // cam_frame output isn't string!!!!!!!!!!
-            cout << ascii_art << endl; // fix function parameter
+            string ascii_art = getCameraLogicString(cam_frame); // cam_frame output isn't string!!!!!!!!!!
+            cout << "\033[H" << ascii_art; // will fix output later, its returnable rn
         }
     }
 
-    destroyAllWindows(); 
+    cv::destroyAllWindows(); 
     cap.release(); //resource cleaning
     return 0;
 
