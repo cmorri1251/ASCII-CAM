@@ -6,9 +6,8 @@ std::string output;
 cv::Mat processed_frame;
 
 std::string getCameraLogicString(const cv::Mat& cam_input){ // camera input switched to constant
-    cv::cvtColor(cam_input, processed_frame, cv::IMREAD_GRAYSCALE); 
+    cv::cvtColor(cam_input, processed_frame, cv::COLOR_BGR2GRAY); 
     cv::resize(processed_frame, processed_frame, cv::Size(80, 40));
-    cv::Mat processed_frame;
     output.clear();
     output.reserve(processed_frame.rows * (processed_frame.cols + 1));
 
@@ -17,7 +16,7 @@ std::string getCameraLogicString(const cv::Mat& cam_input){ // camera input swit
             int brightness = processed_frame.at<uchar>(y, x);
             int index = brightness * (gscale.size() - 1) / 255;
             output += gscale[index];
-            std::cout << output;
+            //std::cout << output;
         }
         output += "\n";
     }

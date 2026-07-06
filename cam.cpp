@@ -24,7 +24,7 @@ int main(int argc, char** argv){
 
         } else {
             string ascii_art = getCameraLogicString(cam_frame); // cam_frame output isn't string!!!!!!!!!!
-            cout << "\033[H" << ascii_art; // will fix output later, its returnable rn
+            cout << "\033[2J\033[H" << ascii_art; // will fix output later, its returnable rn
         }
     }
 
