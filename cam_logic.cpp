@@ -15,7 +15,7 @@ std::string getCameraLogicString(const cv::Mat& cam_input){
     } else{
         processed_frame.convertTo(processed_frame, CV_8U, 255.0 / (maxVal - minVal), -minVal * 255.0 / (maxVal - minVal));
     }
-
+    
     cv::GaussianBlur(processed_frame,processed_frame,cv::Size(3,3),0); // filter for noise 
     cv::resize(processed_frame, processed_frame, cv::Size(160, 80));
     output.clear();
