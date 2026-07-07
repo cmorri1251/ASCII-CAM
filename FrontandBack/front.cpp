@@ -1,6 +1,5 @@
-//#include "crow.h"
-//#include "crow_all.h"
 #include "/home/bub/crow/scripts/crow_all.h" 
+#include "cam_logic.h" // for function call??
 
 int main()
 {
