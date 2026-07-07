@@ -46,7 +46,7 @@ int main(int argc, char** argv){
     crow::SimpleApp app;
     
     CROW_ROUTE(app, "/")([](){
-        ifstream file("../FrontandBack/templates/front.html");
+        ifstream file("../templates/front.html");
         if (!file.is_open()) {
             return crow::response(404, "Could not locate  front.html");
         }
