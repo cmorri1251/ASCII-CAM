@@ -5,10 +5,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    # result = subprocess.run(['ASCII-CAM/BackEnd/cam.cpp'], capture_output=True, text=True)
-    # cpp_value = result.stdout.strip()
 
     return render_template('front.html')
+
+@app.route('stream')
+def stream():
+    pass
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)   
