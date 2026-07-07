@@ -2,6 +2,7 @@
 #include <opencv2/opencv.hpp>
 #include "cam_logic.h"
 #include <string>
+#include "/home/bub/crow/scripts/crow_all.h"
 
 using namespace std;
 

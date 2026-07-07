@@ -16,7 +16,8 @@ Uses camera input from the user, and outputs an ASCII converted live image. Logi
 2. pkg-config --modversion opencv4   
 
 
-IF YOU'RE NOT USING VSCODE/AUTO CONFIG IDE, YOU'LL NEED TO COMPILE LIKE THIS:
-g++ main.cpp -o main `pkg-config --cflags --libs opencv4`  
+IF YOU'RE NOT USING VSCODE/AUTO CONFIG IDE, YOU'LL NEED TO COMPILE LIKE THIS (makefile will be done soon):
+g++ -std=c++17 cam.cpp cam_logic.cpp -o cam_app `pkg-config --cflags --libs opencv4` -lpthread   
+g++ -std=c++17 front.cpp -o my_app -lpthread
 
 ```
