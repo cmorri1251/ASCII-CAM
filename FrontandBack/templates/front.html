@@ -13,10 +13,18 @@
         .CameraBox{
             background-color:#1E1F22;
             color: white;
-            padding:350px;
-            border-radius: 12px;
+            padding:40px;
+            border-radius: 50px;
             text-align:center;
-            width: 500px;   
+            display: inline-block  
+        }
+        #stream{
+            /* font-family: monospace; */
+            font-size: 12px;
+            line-height: 16px;   
+            letter-spacing: 0;
+            white-space: pre;
+            margin: 0;
         }
     </style> 
 </head>
@@ -26,7 +34,22 @@
     </div>
 
     <script>
-    // listener portion
+    const streamEl = document.getElementById('stream');
+
+        function connect() {
+            const ws = new WebSocket(`ws://${location.host}/ws`);
+            ws.onopen = () => console.log('connected');
+            ws.onmessage = (e) => {
+                streamEl.textContent = e.data;
+            };
+            ws.onclose = () => {
+                streamEl.textContent = 'Disconnected, reconnecting';
+                setTimeout(connect, 1000);   
+            };
+            ws.onerror = () => ws.close();
+        }
+
+        connect();
     </script>
 </body>
 </html>
