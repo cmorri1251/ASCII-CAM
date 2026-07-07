@@ -24,7 +24,7 @@ int main(int argc, char** argv){
 
         } else {
             string ascii_art = getCameraLogicString(cam_frame); 
-            cout << "\033[H\033[2J" << ascii_art;
+            cout << "\033[H\033[2J" << ascii_art; // change to frame end spacer instead of the 033 code 
         }
     }
     cv::destroyAllWindows(); 
